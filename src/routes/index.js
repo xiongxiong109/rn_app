@@ -4,11 +4,11 @@ import Home from './Home';
 import Counter from './Counter';
 
 const Routes = StackNavigator({
-	Counter: {
-		screen: Counter
-	},
 	Home: {
 		screen: Home
+	},
+	Counter: {
+		screen: Counter
 	}
 });
 

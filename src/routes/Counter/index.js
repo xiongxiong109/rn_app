@@ -2,6 +2,9 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+import Timer from './components/timer';
+import OperBtn from './containers/operBtn';
+
 export default class Counter extends Component {
 	static navigationOptions = {
 		title: '计时器'
@@ -12,7 +15,8 @@ export default class Counter extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<Text style={styles.txt}>Counter</Text>
+				<Timer />
+				<OperBtn />
 			</View>
 		)
 	}
@@ -21,9 +25,5 @@ export default class Counter extends Component {
 const styles = StyleSheet.create({
 	container: {
 		backgroundColor: '#ddd'
-	},
-	txt: {
-		fontSize: 20,
-		color: '#c00'
 	}
 });

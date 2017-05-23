@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#ccc'
 	},
 	item: {
-		width: width / 2 - 0.5,
+		width: width / 2,
 		height: width / 2,
 		alignItems: 'center',
 		justifyContent: 'center',
