@@ -1,6 +1,7 @@
 // operBtn container
 import { connect } from 'react-redux';
 import OperBtn from '../components/operBtn';
+import { TimeActs } from '../../../actions';
 
 // 这里只获取整个程序的timeModule模块
 const mapStateToProps = (state) => ({
@@ -10,8 +11,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
 	// 切换计时与暂停
 	evt_toggleRunning() {
-		alert('message');
-		// dispatch();
+		dispatch(TimeActs.toggleOnOff());
 	}
 });
 
