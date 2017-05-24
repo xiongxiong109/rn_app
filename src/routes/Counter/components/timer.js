@@ -1,5 +1,5 @@
-// 璁℃椂闈㈡澘
-import React, { Component } from 'react';
+// 计时面板
+import React, { Component, PropTypes } from 'react';
 import {
 	View,
 	Text,
@@ -9,24 +9,37 @@ import {
 
 export default class Timer extends Component {
 
+	static propTypes = {
+		time: PropTypes.shape({
+			curTime: PropTypes.number,
+			totalTime: PropTypes.number
+		})
+	}
+
 	render() {
+		const { time } = this.props;
 		return (
 			<View style={styles.container}>
 				<View style={styles.perTime}>
-					<Text style={styles.perTxt}>00:00.00</Text>
+					<Text style={styles.perTxt}>{this.format(time.curTime)}</Text>
 				</View>
 				<View style={styles.totalTime}>
-					<Text style={styles.totalTxt}>00:00.00</Text>
+					<Text style={styles.totalTxt}>{this.format(time.totalTime)}</Text>
 				</View>
 			</View>
 		);
+	}
+	// methods
+	// 将
+	format(time) {
+		return time.toFixed(2);
 	}
 }
 
 const { height, width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
-	// 瀹瑰櫒
+	// 容器
 	container: {
 		width: width,
 		height: 150,
