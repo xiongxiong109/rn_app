@@ -2,6 +2,7 @@
 import { StackNavigator } from 'react-navigation';
 import Home from './Home';
 import Counter from './Counter';
+import Weather from './Weather';
 
 const Routes = StackNavigator({
 	Home: {
@@ -9,6 +10,9 @@ const Routes = StackNavigator({
 	},
 	Counter: {
 		screen: Counter
+	},
+	Weather: {
+		screen: Weather
 	}
 });
 
