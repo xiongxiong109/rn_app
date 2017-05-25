@@ -32,3 +32,9 @@ export const clearCurTime = () => {
 		payload: {}
 	}
 }
+
+export const resetAll = () => {
+	return {
+		type: TimeCsts.CLEAR_ALL
+	}
+}

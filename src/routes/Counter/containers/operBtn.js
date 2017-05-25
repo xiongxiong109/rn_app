@@ -12,6 +12,8 @@ const mapDispatchToProps = (dispatch) => ({
 	// 切换计时与暂停
 	evt_toggleRunning() {
 		dispatch(TimeActs.toggleOnOff());
+		// 清除当前curTime
+		dispatch(TimeActs.clearCurTime());
 	},
 	// 计算总时间
 	evt_countTotalTime() {
@@ -25,6 +27,10 @@ const mapDispatchToProps = (dispatch) => ({
 			// 清除当前curTime
 			dispatch(TimeActs.clearCurTime());
 		}
+	},
+	// 复位所有状态
+	evt_reset() {
+		dispatch(TimeActs.resetAll());
 	}
 });
 

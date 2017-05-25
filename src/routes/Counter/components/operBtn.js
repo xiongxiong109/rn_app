@@ -14,10 +14,12 @@ export default class OperBtn extends Component {
 	// 静态类型检查
 	static propTypes = {
 		time: PropTypes.shape({
-			isRunning: PropTypes.bool
+			isRunning: PropTypes.bool,
+			curCount: PropTypes.number
 		}),
 		evt_toggleRunning: PropTypes.func,
-		evt_setTime: PropTypes.func
+		evt_setTime: PropTypes.func,
+		evt_reset: PropTypes.func
 	}
 	// lifecircle
 	componentWillMount() {
@@ -31,9 +33,17 @@ export default class OperBtn extends Component {
 		return (
 			<View style={styles.container}>
 				<View style={styles.btnWrapper}>
-					<TouchableOpacity style={styles.btn} onPress={() => this.evt_Time(time.curTime)}>
-						<Text>计次</Text>
-					</TouchableOpacity>
+					{
+						time.curCount <= 4 ?
+						<TouchableOpacity style={styles.btn} onPress={() => this.evt_Time(time.curTime)}>
+							<Text>计次</Text>
+						</TouchableOpacity>
+						:
+						<TouchableOpacity style={styles.btn} onPress={() => this.resetAll()}>
+							<Text>复位</Text>
+						</TouchableOpacity>
+					}
+					
 					<TouchableOpacity style={styles.btn} onPress={() => this.evt_onOff()}>
 						<Text style={
 							time.isRunning ? styles.stop : styles.running
@@ -55,6 +65,11 @@ export default class OperBtn extends Component {
 			evt_toggleRunning();
 			clearInterval(this.counterTimer);
 		}
+	}
+	resetAll() {
+		const { evt_reset } = this.props;
+		this.clearTimer();
+		evt_reset();
 	}
 	evt_Time(curTime) {
 		const { time, evt_setTime } = this.props;

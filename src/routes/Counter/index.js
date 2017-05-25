@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import Timer from './containers/timer';
 import OperBtn from './containers/operBtn';
-import TimeList from './components/timeList';
+import TimeList from './containers/timeList';
 
 export default class Counter extends Component {
 	static navigationOptions = {

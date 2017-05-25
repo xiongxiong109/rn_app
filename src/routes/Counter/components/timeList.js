@@ -1,5 +1,5 @@
 // 计时列表
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
 	ScrollView,
 	View,
@@ -10,16 +10,20 @@ import {
 import utils from '../../../utils';
 
 export default class TimeList extends Component {
+
+	static propTypes = {
+		time: PropTypes.shape({
+			list: PropTypes.array
+		})
+	}
+
 	render() {
+		let { time } = this.props;
 		return (
 			<ScrollView style={styles.container}>
-				<View style={styles.item}><Text>0.05</Text></View>
-				<View style={styles.item}><Text>0.18</Text></View>
-				<View style={styles.item}><Text>13.58</Text></View>
-				<View style={styles.item}><Text>13.58</Text></View>
-				<View style={styles.item}><Text>13.58</Text></View>
-				<View style={styles.item}><Text>13.58</Text></View>
-				<View style={styles.item}><Text>13.58</Text></View>
+				{time.list.map(item => (
+					<View style={styles.item} key={ item.id }><Text>{item.time.toFixed(2)}</Text></View>
+				))}
 			</ScrollView>
 		)
 	}
