@@ -20,7 +20,7 @@ export default class TimeList extends Component {
 	render() {
 		let { time } = this.props;
 		return (
-			<ScrollView style={styles.container}>
+			<ScrollView style={styles.container} showsVerticalScrollIndicator ={false}>
 				{time.list.map(item => (
 					<View style={styles.item} key={ item.id }><Text>{item.time.toFixed(2)}</Text></View>
 				))}
