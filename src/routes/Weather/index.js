@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import Swiper from 'react-native-swiper';
+import WeatherCard from './components/weatherCard';
 
 export default class Weather extends Component {
 
@@ -19,7 +20,12 @@ export default class Weather extends Component {
 
 	render() {
 		return (
-			<View><Text>123</Text></View>
+			<View>
+				<Swiper loop={false} >
+					<WeatherCard/>
+					<WeatherCard/>
+				</Swiper>
+			</View>
 		)
 	}
 }
