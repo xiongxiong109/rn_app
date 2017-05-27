@@ -6,16 +6,32 @@ import {
 	StyleSheet
 } from 'react-native';
 
+import axios from 'axios';
+
 export default class BriefInfo extends Component {
 	render() {
 		return (
 			<View style={styles.wrap}>
-				<Text style={[styles.city, styles.ft]}>福州</Text>
+				<Text style={[styles.city, styles.ft]} onPress={() => this.fetchData()}>上海</Text>
 				<Text style={[styles.state, styles.ft]}>大部晴朗</Text>
 				<Text style={[styles.temp, styles.ft]}>15°</Text>
 			</View>
 		)
 	}
+
+	fetchData() {
+		axios
+		.get('https://api.douban.com/v2/book/1220562', {})
+		.then(this.fetchSucc)
+		.catch(this.fetchErr)
+	}
+	fetchSucc(res) {
+		alert(JSON.stringify(res.data));
+	}
+	fetchErr(err) {
+		alert('err');
+	}
+
 }
 
 const styles = StyleSheet.create({
