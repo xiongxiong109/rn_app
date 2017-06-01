@@ -10,6 +10,7 @@ import {
 
 // 当前页面导航
 const navs = [
+	{title: 'flex布局', path: 'FlexLayout'},
 	{title: '计时器', path: 'Counter'},
 	{title: '天气', path: 'Weather'},
 	{title: '新闻', path: 'News'}
