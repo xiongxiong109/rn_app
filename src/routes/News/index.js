@@ -1,61 +1,44 @@
 import React, { Component } from 'react';
 import {
-  Animated,
   View,
   Text,
-  Image,
-  Easing,
   StyleSheet
 }
 from 'react-native';
 
-import utils from '../../utils';
+import LaunchView from './launch';
+import MainView from './main';
 
 export default class News extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      launchOpacity: new Animated.Value(1) // 透明度变化
+      showLaunch: true
     }
   }
   componentDidMount() {
-    // 执行启动动画
-    this.runLaunchAnimation();
+    setTimeout(() => {
+      this.setState({
+        showLaunch: false
+      });
+    }, 1500);
   }
   render() {
     return (
       <View style={styles.wrap}>
-        <Animated.View style={[styles.launch, {
-          opacity: this.state.launchOpacity
-        }]}>
-          <Image source = {require('../../img/clear.png')} style={styles.map} />
-        </Animated.View>
-       </View >
+        {
+          this.state.showLaunch ?
+          <LaunchView /> :
+          <MainView />
+        }
+      </View >
     );
   }
-  runLaunchAnimation() {
-    Animated.timing(
-      this.state.launchOpacity,
-      {
-        toValue: 0,
-        duration: 2000
-      }
-    ).start()
-  }
+  
 }
 
 const styles = StyleSheet.create({
   wrap: {
     flex: 1
-  },
-  launch: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    backgroundColor: '#d00'
-  },
-  map: {
-    width: 50,
-    height: 50
   }
 })
