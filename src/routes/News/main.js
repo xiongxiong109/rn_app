@@ -3,15 +3,20 @@ import React, { Component } from 'react';
 import {
 	Animated,
 	View,
-	TouchableOpacity,
 	Text,
-	Image,
+	TouchableOpacity,
 	ListView,
 	StyleSheet,
 	Easing
 } from 'react-native';
 
+import {NewsModel} from '../../model/news.model';
+
+// animate View
 const AnimatedView = Animated.createAnimatedComponent(View);
+
+// models
+let newsModel = new NewsModel();
 
 export default class MainView extends Component {
 
@@ -22,7 +27,28 @@ export default class MainView extends Component {
 			aniShowViewOpacity: new Animated.Value(0)
 		}
 	}
+
 	componentDidMount() {
+		this.aniShowPanel();
+	}
+	render() {
+		return (
+			<AnimatedView style={[styles.container, {
+				opacity: this.state.aniShowViewOpacity,
+				transform: [
+					{
+						translateY: this.state.aniShowViewY
+					}
+				]
+			}]}>
+				<TouchableOpacity onPress={() => this.fetchNews()}>
+					<Text>获取庄心妍的music</Text>
+				</TouchableOpacity>
+			</AnimatedView>
+		)
+	}
+	// show动画
+	aniShowPanel() {
 		Animated.timing(
 			this.state.aniShowViewY,
 			{
@@ -38,21 +64,16 @@ export default class MainView extends Component {
 			}
 		).start();
 	}
-	render() {
-		return (
-			<AnimatedView style={[styles.container, {
-				opacity: this.state.aniShowViewOpacity,
-				transform: [
-					{
-						translateY: this.state.aniShowViewY
-					}
-				]
-			}]}>
-				<TouchableOpacity>
-					<Text>Click</Text>
-				</TouchableOpacity>
-			</AnimatedView>
-		)
+	fetchNews() {
+		newsModel.set({
+			q: '庄心妍',
+			start: 0,
+			count: 10
+		});
+		newsModel.go(this.fetchCallback);
+	}
+	fetchCallback(data) {
+		alert(JSON.stringify(data.musics));
 	}
 }
 
