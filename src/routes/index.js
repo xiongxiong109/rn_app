@@ -23,5 +23,5 @@ const Routes = StackNavigator({
 		screen: FlexLayout
 	}
 });
-
+console.log('rn在window下的工程目录不能有中文名!!');
 export default Routes;
