@@ -22,7 +22,7 @@ export default class WebPage extends Component {
 		const {url} = state.params;
 		return (
 			<View style={{flex: 1}}>
-				<WebView source={{uri: url}} scalesPageToFit={true} style={{backgroundColor: '#c00', height: 200}}/>
+				<WebView source={{uri: url}} scalesPageToFit={true} style={{backgroundColor: '#efefef', height: 200}}/>
 			</View>
 		)
 	}
