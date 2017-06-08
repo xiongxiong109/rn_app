@@ -10,13 +10,15 @@ import {
 	Easing
 } from 'react-native';
 
-import {NewsModel} from '../../model/news.model';
+// import {NewsModel} from '../../model/news.model';
+import FetchBtn from './containers/fetchBtn';
+import ItemList from './containers/itemList';
 
 // animate View
 const AnimatedView = Animated.createAnimatedComponent(View);
 
 // models
-let newsModel = new NewsModel();
+// let newsModel = new NewsModel();
 
 export default class MainView extends Component {
 
@@ -41,9 +43,8 @@ export default class MainView extends Component {
 					}
 				]
 			}]}>
-				<TouchableOpacity onPress={() => this.fetchNews()}>
-					<Text>获取庄心妍的music</Text>
-				</TouchableOpacity>
+			<FetchBtn />
+			<ItemList {...this.props} />
 			</AnimatedView>
 		)
 	}
@@ -64,17 +65,17 @@ export default class MainView extends Component {
 			}
 		).start();
 	}
-	fetchNews() {
-		newsModel.set({
-			q: '庄心妍',
-			start: 0,
-			count: 10
-		});
-		newsModel.go(this.fetchCallback);
-	}
-	fetchCallback(data) {
-		alert(JSON.stringify(data.musics));
-	}
+	// fetchNews() {
+		// newsModel.set({
+		// 	q: '庄心妍',
+		// 	start: 0,
+		// 	count: 10
+		// });
+		// newsModel.go(this.fetchCallback);
+	// }
+	// fetchCallback(data) {
+		// alert(JSON.stringify(data.musics));
+	// }
 }
 
 const styles = StyleSheet.create({

@@ -4,6 +4,7 @@ import Home from './Home';
 import Counter from './Counter';
 import Weather from './Weather';
 import News from './News';
+import Web from './Web';
 import FlexLayout from './FlexLayout';
 
 const Routes = StackNavigator({
@@ -18,6 +19,9 @@ const Routes = StackNavigator({
 	},
 	News: {
 		screen: News
+	},
+	Web: {
+		screen: Web
 	},
 	FlexLayout: {
 		screen: FlexLayout

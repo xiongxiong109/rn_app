@@ -29,7 +29,7 @@ export default class News extends Component {
         {
           this.state.showLaunch ?
           <LaunchView /> :
-          <MainView />
+          <MainView {...this.props} />
         }
       </View >
     );
