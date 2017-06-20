@@ -6,7 +6,7 @@ import Weather from './Weather';
 import News from './News';
 import Web from './Web';
 import FlexLayout from './FlexLayout';
-
+import DragHand from './DragHand';
 const Routes = StackNavigator({
 	Home: {
 		screen: Home
@@ -25,6 +25,9 @@ const Routes = StackNavigator({
 	},
 	FlexLayout: {
 		screen: FlexLayout
+	},
+	DragHand: {
+		screen: DragHand
 	}
 });
 console.log('rn在window下的工程目录不能有中文名!!');

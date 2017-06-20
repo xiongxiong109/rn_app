@@ -13,7 +13,8 @@ const navs = [
 	{title: 'flex布局', path: 'FlexLayout'},
 	{title: '计时器', path: 'Counter'},
 	{title: '天气', path: 'Weather'},
-	{title: '新闻', path: 'News'}
+	{title: '新闻', path: 'News'},
+	{title: '自由拖拽', path: 'DragHand'}
 ];
 
 export default class Home extends Component {
