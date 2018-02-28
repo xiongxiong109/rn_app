@@ -14,7 +14,8 @@ const navs = [
 	{title: '计时器', path: 'Counter'},
 	{title: '天气', path: 'Weather'},
 	{title: '新闻', path: 'News'},
-	{title: '自由拖拽', path: 'DragHand'}
+	{title: '自由拖拽', path: 'DragHand'},
+	{title: 'Twitter Layout', path: 'Twitter'}
 ];
 
 export default class Home extends Component {
@@ -23,6 +24,9 @@ export default class Home extends Component {
 	}
 	constructor(props) {
 		super(props);
+	}
+	componentDidMount() {
+		console.log('x')
 	}
 	render() {
 		return (

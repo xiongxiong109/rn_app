@@ -19,6 +19,8 @@ export default class DragHandler extends Component {
 		this.state = {
 			dx: 0,
 			dy: 0,
+      left: 0,
+      top: 0,
 			op: 1
 		}
 	}
@@ -33,13 +35,15 @@ export default class DragHandler extends Component {
       onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
       // 手势开始操作
       onPanResponderGrant: (evt, gestureState) => {
-      	this.setState({op: 0.5});
+      	this.setState({
+          op: 0.5
+        });
       },
       onPanResponderMove: (evt, gestureState) => {
-      	this.setState({
-      		dx: gestureState.dx,
-      		dy: gestureState.dy
-      	})
+        this.setState({
+          left: this.state.dx + gestureState.dx,
+          top: this.state.dy + gestureState.dy
+        });
       },
       // 手势释放
       onPanResponderRelease: (evt, gestureState) => this._moveEnd(evt, gestureState),
@@ -57,9 +61,9 @@ export default class DragHandler extends Component {
 					ref={(ball) => {this.dragBall = ball;}}
 					source={this.props.ballImg}
 					style={[styles.ball, {
-						left: dx,
-						top: dy,
-						opacity: op
+						opacity: op,
+            left: this.state.left,
+            top: this.state.top
 					}]}
 					{...this._panResponder.panHandlers}
 				/>
@@ -68,6 +72,11 @@ export default class DragHandler extends Component {
 	}
 	_moveEnd(evt, gestureState) {
 		let {dx, dy} = this.state;
+    this.setState({
+      op: 1,
+      dx: dx + gestureState.dx,
+      dy: dy + gestureState.dy
+    })
 	}
 }
 
