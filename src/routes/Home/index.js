@@ -15,7 +15,7 @@ const navs = [
 	{title: '天气', path: 'Weather'},
 	{title: '新闻', path: 'News'},
 	{title: '自由拖拽', path: 'DragHand'},
-	{title: 'Twitter Layout', path: 'Twitter'}
+	{title: '键盘与输入框', path: 'Keyboard'}
 ];
 
 export default class Home extends Component {
