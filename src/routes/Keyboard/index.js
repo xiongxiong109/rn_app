@@ -8,7 +8,7 @@ import {
   Text,
   TextInput,
   StyleSheet
-} from 'react-native'
+} from 'react-native';
 
 let { halfPix } = Utils
 
@@ -21,34 +21,39 @@ class KeyboardView extends Component {
   }
   render() {
     return (
-      <KeyboardAvoidingView behavior='position'>
-        <View style={styles.wrapper}>
-          <ScrollView contentContainerStyle={styles.container}></ScrollView>
-          <View style={styles.toolbar}>
-            <TextInput></TextInput>
-          </View>
-        </View>
-      </KeyboardAvoidingView>
+      <View style={styles.outerContainer}>
+        <KeyboardAvoidingView style={styles.container}>
+          <TextInput
+            autoFocus={true}
+            multiline={true}
+            textAlignVertical={'top'}
+            numberOfLines={5}
+            placeholder={'placeholder'}
+            style={styles.toolbar}
+            underlineColorAndroid={'transparent'}
+          ></TextInput>
+        </KeyboardAvoidingView>
+      </View>
     )
-  }
-  onKeyChange(e) {
-    alert(e)
   }
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    display: 'flex',
-    height: Utils.height - 80,
-    justifyContent: 'space-between'
-  },
-  container: {
+  outerContainer: {
     flex: 1,
     backgroundColor: '#efefef'
   },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+    paddingTop: 20
+  },
   toolbar: {
-    height: 80 / halfPix,
-    backgroundColor: '#ccc'
+    borderRadius: 5,
+    borderWidth: 1,
+    // height: 44,
+    paddingHorizontal: 10
   }
 })
 
